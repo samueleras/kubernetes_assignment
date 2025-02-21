@@ -27,7 +27,7 @@ jobs:
       - name: Run Unit Tests
         run: |
           mkdir -p TestResults
-          dotnet test webapi.Tests/webapi.Tests.csproj --no-build --configuration Release --logger trx --results-directory TestResults
+          dotnet test ./webapi.Tests/webapi.Tests.csproj --no-build --configuration Release --logger trx --results-directory TestResults
         continue-on-error: false # Stop pipeline if tests fail
 
       - name: Upload Test Results
