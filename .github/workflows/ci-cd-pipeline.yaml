@@ -25,9 +25,7 @@ jobs:
         run: dotnet build webapi/webapi.csproj --configuration Release
 
       - name: Run Unit Tests
-        run: |
-          mkdir -p TestResults
-          dotnet test webapi.Tests/webapi.Tests.csproj --configuration Release --logger trx --results-directory TestResults
+        run: dotnet test webapi.Tests/webapi.Tests.csproj --configuration Release
         continue-on-error: false # Stop pipeline if tests fail
 
       - name: Upload Test Results
