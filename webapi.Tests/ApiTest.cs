@@ -25,6 +25,6 @@ public class HelloApiTest : IClassFixture<WebApplicationFactory<Program>>
         // Deserialize the response into a strongly-typed object
         var jsonResponse = await response.Content.ReadFromJsonAsync<HelloResponse>();
         Assert.NotNull(jsonResponse);
-        Assert.Equal("Hello from API! With CI/CD.", jsonResponse.message);
+        Assert.Equal("Hello from API! With CI/CD. Test", jsonResponse.message);
     }
 }
