@@ -22,12 +22,12 @@ jobs:
           dotnet-version: "8.0.405" # Use the .NET version of your project
 
       - name: Build Project
-        run: dotnet build kubernetes_assignment/kubernetes_assignment.csproj --configuration Release
+        run: dotnet build webapi/webapi.csproj --configuration Release
 
       - name: Run Unit Tests
         run: |
           mkdir -p TestResults
-          dotnet test kubernetes_assignment.Tests/kubernetes_assignment.Tests.csproj --no-build --configuration Release --logger trx --results-directory TestResults
+          dotnet test webapi.Tests/webapi.Tests.csproj --no-build --configuration Release --logger trx --results-directory TestResults
         continue-on-error: false # Stop pipeline if tests fail
 
       - name: Upload Test Results
@@ -48,7 +48,7 @@ jobs:
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v4 # build and push to dockerhub
         with:
-          context: ./kubernetes_assignment
+          context: ./webapi
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/kubernetes_assignment:latest
