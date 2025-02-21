@@ -1,0 +1,32 @@
+# Build & Output Folders
+bin/
+obj/
+artifacts/
+
+# User-Specific Files
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Logs & Debugging
+*.log
+logs/
+TestResults/
+
+# Dependency Files
+node_modules/
+packages/
+project.lock.json
+*.pdb
+
+# Configuration Files
+appsettings*.json
+secrets.json
+
+# Runtime & Cache
+*.db
+*.db-journal
+.cache/
