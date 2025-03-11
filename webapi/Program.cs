@@ -13,7 +13,7 @@ app.UseDefaultFiles();
 app.UseStaticFiles();
 
 // API endpoint that returns a JSON response
-app.MapGet("/api/hello", () => Results.Json(new { message = "Hello from API! With CI/CD. Test3!" }));
+app.MapGet("/api/hello", () => Results.Json(new { message = "Hello from API! With CI/CD." }));
 
 // Explicitly listen on all network interfaces
 app.Urls.Add("http://0.0.0.0:8080");
