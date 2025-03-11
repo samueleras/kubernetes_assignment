@@ -4,19 +4,104 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Minimal C# Web App</title>
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, #1e3c72, #2a5298);
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        text-align: center;
+      }
+
+      .container {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(10px);
+        width: 90%;
+        max-width: 400px;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+      }
+
+      p {
+        font-size: 1rem;
+        margin-bottom: 15px;
+      }
+
+      button {
+        background: #ff8c00;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        font-size: 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      button:hover {
+        background: #ff6700;
+        transform: scale(1.05);
+      }
+
+      #message {
+        font-weight: bold;
+        margin-top: 15px;
+        min-height: 24px;
+      }
+
+      .loading {
+        color: #ffd700;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      #message {
+        animation: fadeIn 0.5s ease-in-out;
+      }
+    </style>
   </head>
   <body>
-    <h1>Welcome to my C# Web App</h1>
-    <p>Click the button to fetch a message from the API:</p>
-    <button onclick="fetchMessage()">Get Message</button>
-    <p id="message"></p>
+    <div class="container">
+      <h1>Welcome to Our Example C# Web App</h1>
+      <p>Click the button to fetch a message from the API:</p>
+      <button onclick="fetchMessage()">Get Message</button>
+      <p id="message"></p>
+    </div>
 
     <script>
       async function fetchMessage() {
-        const response = await fetch("/api/hello");
-        const data = await response.json();
-        document.getElementById("message").innerText = data.message;
+        const messageElement = document.getElementById("message");
+        messageElement.innerHTML = "<span class='loading'>Fetching message...</span>";
+
+        try {
+          const response = await fetch("/api/hello");
+          const data = await response.json();
+          messageElement.innerText = data.message;
+        } catch (error) {
+          messageElement.innerText = "Error fetching message!";
+        }
       }
     </script>
   </body>
 </html>
+
+
